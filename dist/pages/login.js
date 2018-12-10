@@ -1,0 +1,1 @@
+"use strict";require(["../script/config.js"],function(){require(["jquery","swiper","common","bootstrap"],function(e,r,t){e(".phone p").html(t.createDate())})});

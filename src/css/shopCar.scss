@@ -1,0 +1,21 @@
+@import "_flex";
+@import "public";
+@import "header";
+@import "iconfont";
+
+#shopBox{
+	width:80%;
+	div.nav{
+		padding: 1.25rem 0;
+		a{text-decoration:none;}
+		a.navBefore:before{content:"/ ";}
+	}
+	
+
+}
+
+
+
+
+
+
