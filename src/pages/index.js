@@ -1,5 +1,10 @@
 require(["../script/config.js"],function(){
-	require(["jquery","swiper","common","bootstrap"],function($,Swiper,pub){
+	require(["jquery","swiper","common","template","bootstrap"],function($,Swiper,pub,template){
+		console.log(template)
+
+		// template
+
+
 		// 页头时间
 		$(".phone p").html(pub.createDate())
 
@@ -75,8 +80,9 @@ require(["../script/config.js"],function(){
 
 		$.ajax({
 			url:`https://dms-dataapi.meizu.com/data/jsdata.jsonp?blockIds=233,266,267`,
-			// url:`https://localhost:1000/test2?platform=pc`,
+			// url:`https://localhost:1000/test2`,
 			// type:"POST",
+			// data:"platform=pc",
 			dataType:"jsonp",
 			// dataType:"text",
 			success:function(response){
@@ -104,6 +110,9 @@ require(["../script/config.js"],function(){
 				let oimg2=$("<img>");
 				oimg2.attr("src",response.block_266[2].floorAllocations[0].img);
 				$(".mainTopBox-body-R .mainTopBox-body-img").append(oimg2);
+
+
+
 
 
 				// 请求到的图片加载
@@ -147,28 +156,43 @@ require(["../script/config.js"],function(){
 
 				// ------------------------------------------------------------
 				// 商品推荐的请求
+
+				// 页面首次加载的产品展示
+				// template模板引擎
+				let $temp=$("<div class='temp'></div>");
+				$("body").append($temp);
+				$temp.load("http://localhost:1000/pages/templates/templates_index.html",function(){
+
+					var strhtml=template("box1",{list:response.block_266[0].floorAllocations});
+					console.log(strhtml);
+					$(".mainBox1Lists").append(strhtml);
+					$(".mainBox1Lists2").append(strhtml);
+				})
+				
+
 				// box1
-				for(let i=0;i<response.block_266[0].floorAllocations.length;i++){
-					let li=$("<li>");
-					li.html(`
-					<a href="${response.block_266[0].floorAllocations[i].href}"><img src="${response.block_266[0].floorAllocations[i].img}" alt="">
-					<span>${response.block_266[0].floorAllocations[i].name}</span>
-					<em>${response.block_266[0].floorAllocations[i].skuprice}</em></a>
-					<button goodsId="${response.block_266[0].floorAllocations[i].skuid}">加入购物车</button>`);
+				// for(let i=0;i<response.block_266[0].floorAllocations.length;i++){
+				// 	let li=$("<li>");
+				// 	li.html(`
+				// 	<a href="${response.block_266[0].floorAllocations[i].href}"><img src="${response.block_266[0].floorAllocations[i].img}" alt="">
+				// 	<span>${response.block_266[0].floorAllocations[i].name}</span>
+				// 	<em>${response.block_266[0].floorAllocations[i].skuprice}</em></a>
+				// 	<button goodsId="${response.block_266[0].floorAllocations[i].skuid}">加入购物车</button>`);
 
-					$(".mainBox1Lists").append(li);
-				}
+				// 	$(".mainBox1Lists").append(li);
+				// }
+
 				// box2
-				for(let i=0;i<response.block_266[0].floorAllocations.length;i++){
-					let li=$("<li>");
-					li.html(`
-					<a href="${response.block_266[0].floorAllocations[i].href}"><img src="${response.block_266[0].floorAllocations[i].img}" alt="">
-					<span>${response.block_266[0].floorAllocations[i].name}</span>
-					<em>${response.block_266[0].floorAllocations[i].skuprice}</em></a>
-					<button goodsId="${response.block_266[0].floorAllocations[i].skuid}">加入购物车</button>`);
+				// for(let i=0;i<response.block_266[0].floorAllocations.length;i++){
+				// 	let li=$("<li>");
+				// 	li.html(`
+				// 	<a href="${response.block_266[0].floorAllocations[i].href}"><img src="${response.block_266[0].floorAllocations[i].img}" alt="">
+				// 	<span>${response.block_266[0].floorAllocations[i].name}</span>
+				// 	<em>${response.block_266[0].floorAllocations[i].skuprice}</em></a>
+				// 	<button goodsId="${response.block_266[0].floorAllocations[i].skuid}">加入购物车</button>`);
 
-					$(".mainBox1Lists2").append(li);
-				}
+				// 	$(".mainBox1Lists2").append(li);
+				// }
 
 				// 点击tab切换商品目录
 				$(".mainBox1Tittle-tab li").eq(0).addClass("active");

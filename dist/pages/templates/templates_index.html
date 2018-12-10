@@ -1,0 +1,13 @@
+<script type="text/html" id="box1">
+
+	<% for(let i=0;i<list.length;i++){%>
+		<li>
+			<a href="<%= list[i].href %>"><img src="<%=list[i].img%>" alt="">
+			<span><%=list[i].name%></span>
+			<em><%=list[i].skuprice%></em></a>
+			<button goodsId="<%=list[i].skuid%>">加入购物车</button>
+		</li>
+	<% } %>
+
+
+</script>
