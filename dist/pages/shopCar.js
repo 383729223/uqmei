@@ -1,1 +1,1 @@
-"use strict";require(["../script/config.js"],function(){require(["jquery","swiper","common","bootstrap"],function(e,r,t){e(".phone p").html(t.createDate())})});
+"use strict";require(["../script/config.js"],function(){require(["jquery","swiper","common","bootstrap"],function(o,e,t){o("#header").load("common/header.html",function(){o(".phone p").html(t.createDate())}),o("#footer").load("common/footer.html")})});

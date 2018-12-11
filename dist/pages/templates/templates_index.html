@@ -1,4 +1,4 @@
-<script type="text/html" id="box1">
+<script type="text/html" id="box">
 
 	<% for(let i=0;i<list.length;i++){%>
 		<li>
@@ -10,4 +10,19 @@
 	<% } %>
 
 
+</script>
+
+
+
+<script type="text/html" id="box-tab">
+	<% for(let i=0;i<list2.length;i++){ %>
+
+		<li>
+			<a href="<%= list2[i].href %>"><img src="<%=list2[i].img%>" alt="">
+			<span><%=list2[i].name%></span>
+			<em><%=list2[i].skuprice%></em></a>
+			<button goodsId="<%=list2[i].skuid%>">加入购物车</button>
+		</li>
+
+	<%}%>
 </script>

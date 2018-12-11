@@ -1,0 +1,54 @@
+@import "common/flex";
+
+div#footer{
+	width: 100%;background: rgb(245, 244, 244);padding-bottom: 20px;
+	div.footer-top{
+		img{width: 100%;height: auto;}
+	}
+	div.footer-center{
+		background: rgb(68, 68, 68);
+		padding: 12px 0;
+		div.center-box{
+			@include flexbox;@include justify-content(center);@include align-items(center);
+			ul{
+				width: 80%;
+				@include flexbox;@include flex-wrap(wrap);
+				li{
+					width: 25%;height: 50px;text-align: center;
+					a{
+						color: #fff;text-decoration: none;font: 400 16px/50px "";
+						&:hover{font: 600 16px/50px "";}
+					}
+				}
+			}
+			
+			img{width: 75px;height: 75px;margin-right: 5%;}
+
+
+		}
+	}
+	div.footer-bottom{
+		padding-top: 8px;margin-bottom: 20px;
+		@include flexbox;@include justify-content(center);
+		div{
+			@include flexbox;@include flex-direction(column);@include align-items(center);
+			width: 20%;border: 1px solid #ddd;margin: 0 2px;height: 208px;text-align: center;
+			h3{height: 50px;font: 600 20px/50px "楷体";background: #c6c6c6;margin-bottom: 14px;width: 100%;}
+			img{margin-bottom: 10px;}
+			p{
+				height: 40px;
+				a{font: 18px/40px "";text-decoration: none;color:#666;}
+			}
+
+		}
+	}
+	div.copyright{
+		text-align: center;font-size: 12px;
+		a{
+			text-decoration: none;color: #666;font-size: 12px;
+			&:hover{color: #333;}
+		}
+		span{}
+		p{color: #666;font-size: 14px;}
+	}
+}

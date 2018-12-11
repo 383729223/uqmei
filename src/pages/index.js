@@ -2,11 +2,14 @@ require(["../script/config.js"],function(){
 	require(["jquery","swiper","common","template","bootstrap"],function($,Swiper,pub,template){
 		console.log(template)
 
-		// template
+		// 加载头部尾部
+		$("#header").load("common/header.html",function(){
+			// 页头时间
+			$(".phone p").html(pub.createDate())
+		});
+		$("#footer").load("common/footer.html");
 
-
-		// 页头时间
-		$(".phone p").html(pub.createDate())
+			
 
 		// 置顶按钮
 		$(document).scroll(function(){
@@ -163,36 +166,11 @@ require(["../script/config.js"],function(){
 				$("body").append($temp);
 				$temp.load("http://localhost:1000/pages/templates/templates_index.html",function(){
 
-					var strhtml=template("box1",{list:response.block_266[0].floorAllocations});
-					console.log(strhtml);
+					var strhtml=template("box",{list:response.block_266[0].floorAllocations});
+					// console.log(strhtml);
 					$(".mainBox1Lists").append(strhtml);
 					$(".mainBox1Lists2").append(strhtml);
 				})
-				
-
-				// box1
-				// for(let i=0;i<response.block_266[0].floorAllocations.length;i++){
-				// 	let li=$("<li>");
-				// 	li.html(`
-				// 	<a href="${response.block_266[0].floorAllocations[i].href}"><img src="${response.block_266[0].floorAllocations[i].img}" alt="">
-				// 	<span>${response.block_266[0].floorAllocations[i].name}</span>
-				// 	<em>${response.block_266[0].floorAllocations[i].skuprice}</em></a>
-				// 	<button goodsId="${response.block_266[0].floorAllocations[i].skuid}">加入购物车</button>`);
-
-				// 	$(".mainBox1Lists").append(li);
-				// }
-
-				// box2
-				// for(let i=0;i<response.block_266[0].floorAllocations.length;i++){
-				// 	let li=$("<li>");
-				// 	li.html(`
-				// 	<a href="${response.block_266[0].floorAllocations[i].href}"><img src="${response.block_266[0].floorAllocations[i].img}" alt="">
-				// 	<span>${response.block_266[0].floorAllocations[i].name}</span>
-				// 	<em>${response.block_266[0].floorAllocations[i].skuprice}</em></a>
-				// 	<button goodsId="${response.block_266[0].floorAllocations[i].skuid}">加入购物车</button>`);
-
-				// 	$(".mainBox1Lists2").append(li);
-				// }
 
 				// 点击tab切换商品目录
 				$(".mainBox1Tittle-tab li").eq(0).addClass("active");
@@ -203,16 +181,13 @@ require(["../script/config.js"],function(){
 					// console.log($(this).index())
 
 					$(".mainBox1Lists li").remove();
-					for(let i=0;i<response.block_266[$(this).index()].floorAllocations.length;i++){
-						let li=$("<li>");
-						li.html(`
-						<a href="${response.block_266[$(this).index()].floorAllocations[i].href}"><img src="${response.block_266[$(this).index()].floorAllocations[i].img}" alt="">
-						<span>${response.block_266[$(this).index()].floorAllocations[i].name}</span>
-						<em>${response.block_266[$(this).index()].floorAllocations[i].skuprice}</em></a>
-						<button goodsId="${response.block_266[$(this).index()].floorAllocations[i].skuid}">加入购物车</button>`);
 
-						$(".mainBox1Lists").append(li);
-					}
+					$temp.load("http://localhost:1000/pages/templates/templates_index.html",()=>{
+
+							var strhtml1=template("box-tab",{list2:response.block_266[$(this).index()].floorAllocations});
+
+							$(".mainBox1Lists").append(strhtml1);
+						})
 
 				})
 				// box2产品加载
@@ -221,16 +196,12 @@ require(["../script/config.js"],function(){
 					// console.log($(this).index())
 
 					$(".mainBox1Lists2 li").remove();
-					for(let i=0;i<response.block_266[$(this).index()].floorAllocations.length;i++){
-						let li=$("<li>");
-						li.html(`
-						<a href="${response.block_266[$(this).index()].floorAllocations[i].href}"><img src="${response.block_266[$(this).index()].floorAllocations[i].img}" alt="">
-						<span>${response.block_266[$(this).index()].floorAllocations[i].name}</span>
-						<em>${response.block_266[$(this).index()].floorAllocations[i].skuprice}</em></a>
-						<button goodsId="${response.block_266[$(this).index()].floorAllocations[i].skuid}">加入购物车</button>`);
+					$temp.load("http://localhost:1000/pages/templates/templates_index.html",()=>{
 
-						$(".mainBox1Lists2").append(li);
-					}
+							var strhtml2=template("box-tab",{list2:response.block_266[$(this).index()].floorAllocations});
+
+							$(".mainBox1Lists2").append(strhtml2);
+						})
 
 				})
 
