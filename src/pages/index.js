@@ -9,7 +9,9 @@ require(["../script/config.js"],function(){
 		});
 		$("#footer").load("common/footer.html");
 
-			
+		// 模板引擎放置
+		let $temp=$("<div class='temp'></div>");
+		$("body").append($temp);
 
 		// 置顶按钮
 		$(document).scroll(function(){
@@ -41,15 +43,21 @@ require(["../script/config.js"],function(){
 
 		$("#nav>ul>li").eq(1).on("mouseenter",function(){
 			$.ajax({
-				url:`../static/jsonp/provinces.json`,
+				url:`../static/json/provinces.json`,
 				dataType:"json",
 				success:function(resopnse){
 					console.log(resopnse.provinces);
-					for(let i=0;i<resopnse.provinces.length;i++){
-						let li=$("<li>");
-						li.html(`<a href="">${resopnse.provinces[i].provinceName}</a>`);
-						$("#nav>ul>li").eq(1).find("ul").append(li);
-					}
+					// for(let i=0;i<resopnse.provinces.length;i++){
+					// 	let li=$("<li>");
+					// 	li.html(`<a href="">${resopnse.provinces[i].provinceName}</a>`);
+					// 	$("#nav>ul>li").eq(1).find("ul").append(li);
+					// }
+					$temp.load("./templates/templates_index.html",function(){
+
+						var strProvinces=template("provincesList",{list:resopnse.provinces});
+						// console.log(strhtml);
+						$("#nav>ul>li").eq(1).find("ul").append(strProvinces);
+					})
 
 				}
 			})
@@ -162,19 +170,19 @@ require(["../script/config.js"],function(){
 
 				// 页面首次加载的产品展示
 				// template模板引擎
-				let $temp=$("<div class='temp'></div>");
-				$("body").append($temp);
-				$temp.load("http://localhost:1000/pages/templates/templates_index.html",function(){
+				
+				$temp.load("./templates/templates_index.html",function(){
 
 					var strhtml=template("box",{list:response.block_266[0].floorAllocations});
 					// console.log(strhtml);
 					$(".mainBox1Lists").append(strhtml);
 					$(".mainBox1Lists2").append(strhtml);
 				})
-
 				// 点击tab切换商品目录
 				$(".mainBox1Tittle-tab li").eq(0).addClass("active");
 				$(".mainBox1Tittle-tab2 li").eq(0).addClass("active");
+
+
 				// box1产品加载
 				$(".mainBox1Tittle-tab li").on("click",function(){
 					$(this).addClass("active").siblings().removeClass("active");
@@ -182,7 +190,7 @@ require(["../script/config.js"],function(){
 
 					$(".mainBox1Lists li").remove();
 
-					$temp.load("http://localhost:1000/pages/templates/templates_index.html",()=>{
+					$temp.load("./templates/templates_index.html",()=>{
 
 							var strhtml1=template("box-tab",{list2:response.block_266[$(this).index()].floorAllocations});
 
@@ -196,7 +204,7 @@ require(["../script/config.js"],function(){
 					// console.log($(this).index())
 
 					$(".mainBox1Lists2 li").remove();
-					$temp.load("http://localhost:1000/pages/templates/templates_index.html",()=>{
+					$temp.load("./templates/templates_index.html",()=>{
 
 							var strhtml2=template("box-tab",{list2:response.block_266[$(this).index()].floorAllocations});
 
@@ -204,6 +212,53 @@ require(["../script/config.js"],function(){
 						})
 
 				})
+
+
+				// 点击加入购物车，存储cookie
+				$(".mainBox1>ul").on("click","li",function(){
+					// console.log($(this).find("img").attr("src"))
+					// console.log($(this).find("span").html())
+					// console.log($(this).find("em").html())
+					// console.log($(this).find("button").attr("goodsid"))
+					
+					// 此处碰壁，必须先将数据存为变量再传入，不然会出现问题
+					let imgsrc=$(this).find("img").attr("src");
+					let nameC=$(this).find("span").text();
+					let priceC=$(this).find("em").text();
+					let goodsIdC=$(this).find("button").attr("goodsid");
+
+					let goods={
+						"img":imgsrc,
+						"name":nameC,
+						"price":priceC,
+						"goodsId":goodsIdC
+					}
+					let newJson=[];
+					// console.log(pub.getCookie("message"))
+					// 判断是否有cookie
+					if(pub.getCookie("message")){
+						// 如果有，判断避免重复添加商品
+						newJson= JSON.parse(pub.getCookie("message"));
+						
+						let newArr=newJson.filter(function(cookieGoods){
+							return cookieGoods.goodsId === goods.goodsId;
+						})
+						
+						if(newArr.length==0){
+							newJson.push(goods);
+							console.log(newJson)
+						}
+					}else{
+						// 如果之前没有cookie，直接存入
+						newJson=[goods];
+						// console.log(newJson);
+					}
+
+					pub.setCookie("message",JSON.stringify(newJson))
+				})
+
+
+				
 
 			}	//success回调函数EDN
 		})	//ajax-EDN

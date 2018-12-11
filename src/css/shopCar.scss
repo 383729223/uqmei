@@ -11,6 +11,24 @@
 		a{text-decoration:none;}
 		a.navBefore:before{content:"/ ";}
 	}
+	div.shopBoxLists{
+		table{
+			thead{
+				tr{
+					th{text-align: center;}
+				}
+			}
+			tbody{
+				tr{
+					td{
+						height: 100px;text-align: center;line-height: 100px;
+						img{height: 100%;width: auto;}
+					}
+				}
+					
+			}
+		}
+	}
 	
 
 }

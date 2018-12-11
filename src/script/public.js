@@ -1,34 +1,6 @@
 ﻿
 define([],function(){
 	return {
-		// 数组去重封装1----创建空对象的方法
-		delArrarr1:function(arr){
-			var obj={};
-			for(var i=0;i<arr.length;i++){
-				if(obj[arr[i]]){
-					obj[arr[i]]++;
-				}else{
-					obj[arr[i]]=1;
-				}
-			}
-			var newArr=[];
-			for(var i in obj){
-				newArr.push(i);//此时的i为字符,如需数字可 newArr.push(parseInt(i))
-			}
-			return newArr;
-		},
-
-		// 数组去重封装2----indexOf方法
-		delArrarr2:function(arr){
-			var newArr=[];
-			for(var i=0;i<arr.length;i++){
-				if(newArr.indexOf(arr[i]) == -1){
-					newArr.push(arr[i]);
-				}
-			}
-			return newArr;
-		},
-
 
 		//日期的格式化
 		createDate:function(){

@@ -1,0 +1,26 @@
+<script type="text/html" id="shopCarItems">
+	<table class="table table-bordered">
+
+		<thead>
+			<tr>
+				<th>商品图片</th>
+				<th>商品ID/商品名称</th>
+				<th>商品价格</th>
+				<th>商品数量</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% for(let i=0;i<list.length;i++){ %>
+			<tr>
+				<td><img src="<%= list[i].img %>" alt=""></td>
+				<td><%= list[i].goodsId %>/<%= list[i].name %></td>
+				<td><%= list[i].price %></td>
+				<td>数量</td>
+				<td><button>删除该商品</button></td>
+			</tr>
+			<% } %>
+		</tbody>
+
+	</table>
+</script>
