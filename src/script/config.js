@@ -6,6 +6,7 @@ requirejs.config({
 		"swiperAnimate":"libs/swiper.animate1.0.3.min",
 		"swiper":"libs/swiper.min",
 		"common":"public",
-		"template":"libs/template-web"
+		"template":"libs/template-web",
+		"magnifier":"libs/magnifier"	//放大镜插件js
 	}
 })

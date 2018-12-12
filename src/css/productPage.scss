@@ -1,0 +1,38 @@
+@import "common/flex";
+
+@import "header";
+@import "footer";
+@import "public";
+
+
+#productBox{
+	width:80%;
+	div.nav{
+		padding: 1.25rem 0;
+		a{text-decoration:none;}
+		a.navBefore:before{content:"/ ";}
+	}
+	div.product{
+		div.imgShop{
+			position: relative;
+			div#smallImg{
+				background-image:url("");background-position: center; background-size: contain; width:300px; height:300px;position: relative;
+				div#smallCursor{
+					position: absolute; left: 0; top: 0; display:none; width: 80px !important; height: 80px !important; background: rgba(200,198,255,0.8);
+				}
+			}
+
+			div#bigCursor{
+				// display: none;
+				position: absolute; height:350px; width:350px; left: 350px; top:0; background: rgba(200,198,255,0.1); overflow: hidden;
+				img{position: absolute; left: 0px; top: 0px;width: 800px;height: 800px;}
+			}
+		}
+		div.productMessage{
+			
+		}
+	}
+	
+	
+
+}

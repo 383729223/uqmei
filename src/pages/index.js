@@ -213,19 +213,22 @@ require(["../script/config.js"],function(){
 
 				})
 
-
+				
 				// 点击加入购物车，存储cookie
-				$(".mainBox1>ul").on("click","li",function(){
+
+				$(".mainBox1>ul").on("click","button",function(eve){
+
+					eve.stopPropagation();
 					// console.log($(this).find("img").attr("src"))
 					// console.log($(this).find("span").html())
 					// console.log($(this).find("em").html())
 					// console.log($(this).find("button").attr("goodsid"))
-					
+
 					// 此处碰壁，必须先将数据存为变量再传入，不然会出现问题
-					let imgsrc=$(this).find("img").attr("src");
-					let nameC=$(this).find("span").text();
-					let priceC=$(this).find("em").text();
-					let goodsIdC=$(this).find("button").attr("goodsid");
+					let imgsrc=$(this).siblings().find("img").attr("src");
+					let nameC=$(this).siblings().find("span").text();
+					let priceC=$(this).siblings().find("em").text();
+					let goodsIdC=$(this).attr("goodsid");
 
 					let goods={
 						"img":imgsrc,
@@ -258,6 +261,28 @@ require(["../script/config.js"],function(){
 				})
 
 
+				// 点击商品进入详情页,将点击的这个商品信息存进cookie,供详情页使用
+				$(".mainBox1>ul").on("click","li",function(eve){
+					pub.removeCookie("productMessage")
+
+					eve.stopPropagation();
+					let imgsrcP=$(this).find("img").attr("src");
+					let nameP=$(this).find("span").text();
+					let priceP=$(this).find("em").text();
+					let goodsIdP=$(this).find("button").attr("goodsid");
+
+					let productGoods={
+						"img":imgsrcP,
+						"name":nameP,
+						"price":priceP,
+						"goodsId":goodsIdP
+					}
+
+					let newJson=[productGoods];
+	
+
+					pub.setCookie("productMessage",JSON.stringify(newJson))
+				})
 				
 
 			}	//success回调函数EDN
