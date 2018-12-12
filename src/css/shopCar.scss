@@ -12,6 +12,7 @@
 		a.navBefore:before{content:"/ ";}
 	}
 	div.shopBoxLists{
+		padding: 20px 0;
 		table{
 			thead{
 				tr{
@@ -21,11 +22,29 @@
 			tbody{
 				tr{
 					td{
-						height: 100px;text-align: center;line-height: 100px;
-						img{height: 100%;width: auto;}
+						height: 60px;text-align: center;line-height: 60px;
+						img{height: 140%;width: auto;}
+						input.form-control{display: inline-block;width: 20%;text-align: center;font-weight: 600;}
 					}
 				}
 					
+			}
+		}
+	}
+	div.emptyStyle{
+		width: 100%;
+		@include flexbox;@include justify-content(center);@include align-items(center);
+		img{
+			width: auto;height: 55px;
+		}
+		div{
+			// height: 55px;
+			margin-left: 20px;
+			text-align: center;
+			p{font: 16px/2 "";}
+			a{
+				text-decoration: none;color: #666;
+				&:hover{color: #333;font-weight: 600;}
 			}
 		}
 	}

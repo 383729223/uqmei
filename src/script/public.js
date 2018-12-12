@@ -142,7 +142,7 @@ define([],function(){
 
 		// 删除cookie
 		removeCookie:function(key){
-			setCookie(key,1,-1);
+			this.setCookie(key,1,-1);
 		},
 		// 获取cookie
 		getCookie:function(key){

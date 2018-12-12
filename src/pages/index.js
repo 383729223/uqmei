@@ -254,7 +254,7 @@ require(["../script/config.js"],function(){
 						// console.log(newJson);
 					}
 
-					pub.setCookie("message",JSON.stringify(newJson))
+					pub.setCookie("message",JSON.stringify(newJson),7)
 				})
 
 

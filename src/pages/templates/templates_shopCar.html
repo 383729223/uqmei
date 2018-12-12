@@ -4,9 +4,10 @@
 		<thead>
 			<tr>
 				<th>商品图片</th>
-				<th>商品ID/商品名称</th>
-				<th>商品价格</th>
+				<th>商品名称</th>
+				<th>商品单价</th>
 				<th>商品数量</th>
+				<th>小计</th>
 				<th>操作</th>
 			</tr>
 		</thead>
@@ -14,13 +15,29 @@
 			<% for(let i=0;i<list.length;i++){ %>
 			<tr>
 				<td><img src="<%= list[i].img %>" alt=""></td>
-				<td><%= list[i].goodsId %>/<%= list[i].name %></td>
+				<td><%= list[i].name %></td>
 				<td><%= list[i].price %></td>
-				<td>数量</td>
-				<td><button>删除该商品</button></td>
+				<td>
+					<button type="button" class="btn btn-default downbtn">-</button>
+					<input class="form-control shopCount" type="text" value="1">
+					<button type="button" class="btn btn-default upbtn">+</button>
+				</td>
+				<td class="shopSum"><%= list[i].price %></td>
+				<td><button type="button" class="btn btn-danger delbtn" goodsid="<%= list[i].goodsId %>">删除该商品</button></td>
 			</tr>
 			<% } %>
 		</tbody>
 
 	</table>
 </script>
+
+
+<script type="text/html" id="shopCarEmpty">
+	<img src="../img/icon/空购物车.png" alt="" />
+	<div>
+		<p>购物车空空如也~，去看看心仪的商品吧~</p>
+		<a href="index.html">去逛逛&gt;</a>
+	</div>
+</script>
+
+
