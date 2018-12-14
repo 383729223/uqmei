@@ -5,7 +5,7 @@
 @import "public";
 
 
-
+.regSuccess{width: 40%;position: fixed;top: -51px;left: 0;right: 0;margin: auto;}
 #registeBox{
 	width:80%;
 	div.nav{
@@ -32,6 +32,7 @@
 			p{font: 14px/22px "";}
 			form{
 				padding: 12px 0;
+				label.error{color: red;}
 			}
 		}
 	}

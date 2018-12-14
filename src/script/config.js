@@ -7,6 +7,6 @@ requirejs.config({
 		"swiper":"libs/swiper.min",
 		"common":"public",
 		"template":"libs/template-web",
-		"magnifier":"libs/magnifier"	//放大镜插件js
+		"jqueryValidate":"libs/jquery.validate"			//表单验证
 	}
 })

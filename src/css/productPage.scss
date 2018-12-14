@@ -5,31 +5,48 @@
 @import "public";
 
 
+
 #productBox{
 	width:80%;
 	div.nav{
 		padding: 1.25rem 0;
-		a{text-decoration:none;}
+		a{text-decoration:none; color: #666;}
 		a.navBefore:before{content:"/ ";}
 	}
 	div.product{
+		@include flexbox;@include justify-content(space-between);
+
 		div.imgShop{
 			position: relative;
 			div#smallImg{
-				background-image:url("");background-position: center; background-size: contain; width:300px; height:300px;position: relative;
+				width:300px; height:300px;position: relative;
+				img{height: 100%;width: 100%;}
 				div#smallCursor{
-					position: absolute; left: 0; top: 0; display:none; width: 80px !important; height: 80px !important; background: rgba(200,198,255,0.8);
+					position: absolute; left: 0; top: 0; display:none; width: 40px; height: 40px; background: rgba(200,198,255,0.8);
 				}
 			}
 
 			div#bigCursor{
-				// display: none;
-				position: absolute; height:350px; width:350px; left: 350px; top:0; background: rgba(200,198,255,0.1); overflow: hidden;
-				img{position: absolute; left: 0px; top: 0px;width: 800px;height: 800px;}
+				display: none;
+				position: absolute; height:350px; width:350px; left: 350px; top:0; background: rgba(200,198,255,1); overflow: hidden;
+				img{position: absolute; left: 0px; top: 0px;width: 1000px;height: 1000px;}
 			}
 		}
 		div.productMessage{
-			
+			width:70%;
+			h3{font:600 20px/32px "";margin-bottom: 20px;}
+			p{
+				background: #f4f6fa;color: #e02b41;margin-bottom: 20px;
+				i{font: 600 24px/60px "";}
+				em{font:600 36px/60px "";}
+			}
+			div.productNum{
+				font:14px/32px "";margin-bottom: 20px;
+				input.form-control{display: inline-block;width: 10%;text-align: center;font-weight: 600;}
+			}
+			div.submitBtn{
+				button{font-weight: 600;}
+			}
 		}
 	}
 	

@@ -1,5 +1,8 @@
 require(["../script/config.js"],function(){
 	require(["jquery","swiper","common","template","bootstrap"],function($,Swiper,pub,template){
+
+
+	$(function(){		//加载完执行
 		console.log(template)
 
 		// 加载头部尾部
@@ -287,7 +290,9 @@ require(["../script/config.js"],function(){
 
 			}	//success回调函数EDN
 		})	//ajax-EDN
+	
 
+	})	//加载完执行END
 
 
 

@@ -21,9 +21,9 @@ gulp.task('buildJS', ()=>{
 })
 
 
-//压缩css,编译scss->css
+//压缩css,编译scss->css     //on('error', sass.logError) sass出问题不会结束服务器
 gulp.task('buildCSS',()=>{
-	gulp.src('./src/**/*.scss').pipe(sass()).pipe(cleancss()).pipe(gulp.dest('./dist'))
+	gulp.src('./src/**/*.scss').pipe(sass().on('error', sass.logError)).pipe(cleancss()).pipe(gulp.dest('./dist'))
 	gulp.src('./src/**/*.css').pipe(cleancss()).pipe(gulp.dest('./dist'))
 })
 
