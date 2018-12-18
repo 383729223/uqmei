@@ -1,0 +1,70 @@
+@import "common/flex";
+
+@import "header";
+@import "footer";
+@import "public";
+
+
+#personCenterBox{
+	width:80%;
+	div.nav{
+		padding: 1.25rem 0;
+		a{text-decoration:none;}
+		a.navBefore:before{content:"/ ";}
+	}
+	div.personCenterBody{
+		width: 100%;
+		@include flexbox;@include justify-content(space-between);
+		ul.userLists{
+			width: 20%;border-top: 1px solid #ddd;
+			@include flexbox;@include flex-direction(column);
+			li{
+				height:18px;padding: .5rem 1rem;box-sizing: content-box;
+				border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;border-left: 1px solid #ddd;
+				a{font: 12px/18px "";text-decoration: none;color: #888;height: 100%;text-align: left;}
+				a:hover{font-weight: 600;color: #333;}
+			}
+		}
+		div.personCenterInputs{
+			width: 77%;
+			div.personCenter-top{
+				margin-bottom: 20px;
+				h3{padding: 10px 0;font: 22px/24px "";}
+				div.personMessages{
+					
+					div{
+						border: 1px solid #ddd;background: #f5f5f5;width: 100%;height: 65px;padding: 10px 20px;@include flexbox;@include align-items(center);margin-bottom: 20px;
+						img{height: 100%;margin-right: 100px;}
+						p{
+							font: 16px/65px "";margin-right: 100px;
+							em{font-size: 600;}
+						}
+
+					}
+					ul{
+						@include flexbox;@include align-items(center);@include justify-content(space-around);
+						li{
+							border: 1px solid #d8d8d8;width: 30%;padding: 20px 0;
+							@include flexbox;@include align-items(center);@include justify-content(space-between);@include flex-direction(column);
+							h3{color: #333;}
+							a{
+								text-decoration: none;color: #666;margin-bottom: 4px;font-size: 12px;
+								&:hover{color: #333;font-weight: 600;}
+							}
+						}
+					}
+				}
+			}
+			
+			div.personCenter-top{
+				h3{padding: 10px 0;font: 22px/24px "";}
+			}
+
+
+
+
+
+		}
+	}
+
+}

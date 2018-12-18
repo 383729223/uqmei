@@ -26,6 +26,9 @@
 						img{height: 140%;width: auto;}
 						input.form-control{display: inline-block;width: 20%;text-align: center;font-weight: 600;}
 					}
+					td.shopSum{
+						color: #e02b41;font-weight: 600;
+					}
 				}
 					
 			}
@@ -49,6 +52,16 @@
 		}
 	}
 	
+	div.shopBoxPay{
+		@include flexbox;@include justify-content(flex-end);@include align-items(center);
+		width: 100%;height: 50px;border: 1px solid #ddd;
+		em{
+			font: 600 16px/50px "";
+			i{color: #e02b41;font: 600 24px/50px "";}
+		}
+		button.payBtn{background: #ff9e01;color: #fff;font-weight: 600;margin:0 20px;}
+
+	}
 
 }
 

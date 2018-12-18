@@ -69,3 +69,5 @@ gulp.task('webserver',["watching"],()=>{
 });
 
 gulp.task("build", ["buildJS","buildHTML", "buildCSS", "buildStaticResource"])
+
+

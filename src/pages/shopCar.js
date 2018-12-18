@@ -1,6 +1,5 @@
 require(["../script/config.js"],function(){
 	require(["jquery","swiper","common","template","bootstrap"],function($,Swiper,pub,template){
-
 		$(function(){
 			
 		
@@ -17,7 +16,12 @@ require(["../script/config.js"],function(){
 			$("body").append($temp);
 
 
+
+
 			if(pub.getCookie("message")){
+
+				
+
 				$(".shopBoxLists").removeClass("emptyStyle")
 				let cookieJson = JSON.parse(pub.getCookie("message"));
 
@@ -59,7 +63,7 @@ require(["../script/config.js"],function(){
 					if(/^\d+$/.test($(this).val())){
 						count=parseInt($(this).val());
 						shopSumPrice($(this));
-					
+						shopSum()
 					}else{
 						$(this).val("请写数字");
 					}
@@ -74,11 +78,13 @@ require(["../script/config.js"],function(){
 						count=0;
 					}
 					shopSumPrice($(this));
+					shopSum()
 				})
 				$(".shopBoxLists").on("click",".upbtn",function(){
 					console.log("+")
 					count++;
 					shopSumPrice($(this));
+					shopSum()
 				})
 
 
@@ -104,8 +110,31 @@ require(["../script/config.js"],function(){
 						})
 
 					}
+					shopSum()
 				})
 				
+				// 购物车结算栏
+				function shopSum(){
+					let arr=$(".shopSum").text().split("￥");
+					arr.shift();
+					let sum=0;
+					arr.forEach(function(value){
+						sum+=parseInt(value)
+					})
+
+					$(".shopBoxPay em i").text(`￥${sum}`);
+				}
+
+				$temp.load("./templates/templates_shopCar.html",function(){
+					let shopCarPay=template("shopCarPay");
+					$(".shopBoxPay").html(shopCarPay);
+					shopSum()
+					
+				})
+
+				
+
+
 			}else{
 				$(".shopBoxLists").addClass("emptyStyle")
 
@@ -117,8 +146,12 @@ require(["../script/config.js"],function(){
 			}
 
 
+
+
+
+
+
+
 		})
-
-
 	})
 })

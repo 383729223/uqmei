@@ -1,0 +1,1 @@
+"use strict";require(["../script/config.js"],function(){require(["jquery","swiper","common","bootstrap"],function(o,e,t){o(function(){o("#header").load("common/header.html",function(){o(".phone p").html(t.createDate())}),o("#footer").load("common/footer.html")})})});
