@@ -1,12 +1,13 @@
 require(["../script/config.js"],function(){
-	require(["jquery","swiper","common","template","bootstrap"],function($,Swiper,pub,template){
+	require(["jquery","swiper","common","template","jqueryCookie","bootstrap"],function($,Swiper,pub,template,jqCookie){
 		$(function(){		//加载完执行
-			// console.log(template)
+
 
 			// 加载头部尾部
 			$("#header").load("common/header.html",function(){
 				// 页头时间
-				$(".phone p").html(pub.createDate())
+				$(".phone p").html(pub.createDate());
+				require(["headerJs"],function(){});		//加载头部公共JS，登录状态
 			});
 			$("#footer").load("common/footer.html");
 
@@ -236,9 +237,9 @@ require(["../script/config.js"],function(){
 						let newJson=[];
 						// console.log(pub.getCookie("message"))
 						// 判断是否有cookie
-						if(pub.getCookie("message")){
+						if(jqCookie.cookie("message")){
 							// 如果有，判断避免重复添加商品
-							newJson= JSON.parse(pub.getCookie("message"));
+							newJson= JSON.parse(jqCookie.cookie("message"));
 							
 							let newArr=newJson.filter(function(cookieGoods){
 								return cookieGoods.goodsId === goods.goodsId;
@@ -254,13 +255,15 @@ require(["../script/config.js"],function(){
 							// console.log(newJson);
 						}
 
-						pub.setCookie("message",JSON.stringify(newJson),7)
+						jqCookie.cookie("message",JSON.stringify(newJson),{
+							expires:7
+						})
 					})
 
 
 					// 点击商品进入详情页,将点击的这个商品信息存进cookie,供详情页使用
 					$(".mainBox1>ul").on("click","li",function(eve){
-						pub.removeCookie("productMessage")
+						jqCookie.cookie("productMessage")
 
 						eve.stopPropagation();
 						let imgsrcP=$(this).find("img").attr("src");
@@ -278,7 +281,7 @@ require(["../script/config.js"],function(){
 						let newJson=[productGoods];
 		
 
-						pub.setCookie("productMessage",JSON.stringify(newJson))
+						jqCookie.cookie("productMessage",JSON.stringify(newJson))
 					})
 					
 

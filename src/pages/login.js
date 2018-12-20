@@ -1,17 +1,18 @@
 require(["../script/config.js"],function(){
-	require(["jquery","swiper","common","bootstrap"],function($,Swiper,pub){
+	require(["jquery","swiper","common","jqueryCookie","bootstrap"],function($,Swiper,pub,jqCookie){
 		$(function(){
 
 
 			// 加载头部尾部
 			$("#header").load("common/header.html",function(){
 				// 页头时间
-				$(".phone p").html(pub.createDate())
+				$(".phone p").html(pub.createDate());
+				require(["headerJs"],function(){});
 			});
 			$("#footer").load("common/footer.html");
 			
 			// 登录验证
-			console.log(JSON.parse(pub.getCookie("registeMessiges")))
+			console.log(JSON.parse(jqCookie.cookie("registeMessiges")))
 
 			$(".loginBtn").on("click",function(){
 
@@ -29,7 +30,7 @@ require(["../script/config.js"],function(){
 				// cookie模拟登录---------------------
 
 
-				let registeJson=JSON.parse(pub.getCookie("registeMessiges"));
+				let registeJson=JSON.parse(jqCookie.cookie("registeMessiges"));
 				// $(".loginUsername")
 				// $(".loginPassword")
 
@@ -42,7 +43,24 @@ require(["../script/config.js"],function(){
 				}else if(newLogin.length==1){
 
 					if(newLogin[0].telNum==$(".loginUsername").val() && newLogin[0].password==$(".loginPassword").val() ){
-						alert("登录成功！")
+						// 登录成功时，临时存一个该用户的id
+						let currentNum=newLogin[0].telNum;
+						console.log(currentNum)
+						pub.setCookie("currentUser",currentNum)
+
+						// 登陆成功跳转
+						$("body").append(`<div class="alert alert-success regSuccess" role="alert">登录成功！</div>`);
+				      	$(".regSuccess").animate({"top":"10px"},500,"linear",function(){
+				      		setTimeout(()=>{
+				      			$(this).animate({"top":"-51px"},500,function(){
+				      				
+									$(location).attr('href', 'personCenter.html');
+				      			})
+				      		},500)
+					      		
+				      	})
+
+
 					}else{
 						alert("密码错误！")
 					}

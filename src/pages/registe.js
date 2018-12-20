@@ -1,12 +1,13 @@
 require(["../script/config.js"],function(){
-	require(["jquery","swiper","common","jqueryValidate","bootstrap",],function($,Swiper,pub){
+	require(["jquery","swiper","common","jqueryCookie","jqueryValidate","bootstrap",],function($,Swiper,pub,jqCookie){
 		$(function(){
 
 
 			// 加载头部尾部
 			$("#header").load("common/header.html",function(){
 				// 页头时间
-				$(".phone p").html(pub.createDate())
+				$(".phone p").html(pub.createDate());
+				require(["headerJs"],function(){});
 			});
 			$("#footer").load("common/footer.html");
 			
@@ -115,8 +116,8 @@ require(["../script/config.js"],function(){
 					
 					let registeCookie=[];
 
-					if(pub.getCookie("registeMessiges")){
-						registeCookie=JSON.parse(pub.getCookie("registeMessiges"));
+					if(jqCookie.cookie("registeMessiges")){
+						registeCookie=JSON.parse(jqCookie.cookie("registeMessiges"));
 						let newArr=registeCookie.filter(function(regedCookies){
 							return regedCookies.telNum===registeMessige.telNum;
 						})
@@ -146,7 +147,9 @@ require(["../script/config.js"],function(){
 					}
 
 
-					pub.setCookie("registeMessiges",JSON.stringify(registeCookie),15)
+					jqCookie.cookie("registeMessiges",JSON.stringify(registeCookie),{
+						expires:15
+					})
 				}
 
 			})

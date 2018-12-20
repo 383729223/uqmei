@@ -1,5 +1,5 @@
 require(["../script/config.js"],function(){
-	require(["jquery","swiper","common","template","bootstrap"],function($,Swiper,pub,template){
+	require(["jquery","swiper","common","template","jqueryCookie","bootstrap"],function($,Swiper,pub,template,jqCookie){
 
 		// 加载头部尾部
 		$("#header").load("common/header.html",function(){
@@ -11,7 +11,7 @@ require(["../script/config.js"],function(){
 
 
 		// 拿到对应商品的cookie信息
-		let productData=JSON.parse(pub.getCookie("productMessage"))[0];
+		let productData=JSON.parse(jqCookie.cookie("productMessage"))[0];
 		console.log(productData.price)
 		// $("#smallImg").css({"backgroundImage":"url('"+productData.img+"')","backgroundPosition":"center"});//cookie加载小图片
 		$("#smallImg img").attr("src",productData.img);

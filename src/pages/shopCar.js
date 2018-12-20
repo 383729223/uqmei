@@ -1,5 +1,5 @@
 require(["../script/config.js"],function(){
-	require(["jquery","swiper","common","template","bootstrap"],function($,Swiper,pub,template){
+	require(["jquery","swiper","common","template","jqueryCookie","bootstrap"],function($,Swiper,pub,template,jqCookie){
 		$(function(){
 			
 		
@@ -7,7 +7,8 @@ require(["../script/config.js"],function(){
 			// 加载头部尾部
 			$("#header").load("common/header.html",function(){
 				// 页头时间
-				$(".phone p").html(pub.createDate())
+				$(".phone p").html(pub.createDate());
+				require(["headerJs"],function(){});
 			});
 			$("#footer").load("common/footer.html");
 			
@@ -23,7 +24,7 @@ require(["../script/config.js"],function(){
 				
 
 				$(".shopBoxLists").removeClass("emptyStyle")
-				let cookieJson = JSON.parse(pub.getCookie("message"));
+				let cookieJson = JSON.parse(jqCookie.cookie("message"));
 
 				// 判断是否已经清空购物车，这个判断为了解决刷新页面thead依然存在的问题
 				if(cookieJson.length==0){
@@ -100,8 +101,10 @@ require(["../script/config.js"],function(){
 							cookieJson.splice(i,1);
 						}
 					}
-					pub.setCookie("message",JSON.stringify(cookieJson),7);
-					console.log(typeof(pub.getCookie("message")))
+					jqCookie.cookie("message",JSON.stringify(cookieJson),{
+						expires:7
+					});
+					// console.log(typeof(pub.getCookie("message")))
 					if(cookieJson.length==0){
 						$(".shopBoxLists").addClass("emptyStyle")
 						$temp.load("./templates/templates_shopCar.html",function(){
