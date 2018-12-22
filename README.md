@@ -20,26 +20,25 @@ node v8.9.3
 ├── gulpfile.js                 <br/>
 ├── package.json                // 开发环境<br/>
 ├── src                         // 开发根目录<br/>
-│   ├── css                     <br/>
-│       ├── common              <br/>
-│           ├── _flex.scss      <br/>
-│           ├── _selector.scss  <br/>
-│           ├── animate.min.css <br/>
-│           ├── bootstrap.css   <br/>
-│           ├── iconfont.css    <br/>
-│           └── swiper.min.css  <br/>
-│       ├── footer.scss         <br/>
-│       ├── header.scss         <br/>
-│       ├── login.scss         <br/>
-│       ├── personCenter.scss         <br/>
-│       ├── productPage.scss         <br/>
-│       ├── public.scss         <br/>
-│       ├── registe.scss         <br/>
-│       ├── shopCar.scss         <br/>
-│       └── style.scss         <br/>
-│   ├── img                // 图片         <br/>
-│   ├── pages              // 页面         <br/>
-│   ├── script                // JS         <br/>
-│   └── static              // web静态资源加载         <br/>
-
+│   &nbsp;&nbsp;&nbsp;&nbsp;├── css                     <br/>
+│       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── common              <br/>
+│       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── _flex.scss      <br/>
+│       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── _selector.scss  <br/>
+│       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── animate.min.css <br/>
+│       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── bootstrap.css   <br/>
+│       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── iconfont.css    <br/>
+│       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── swiper.min.css  <br/>
+│       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── footer.scss         <br/>
+│       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── header.scss         <br/>
+│       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── login.scss         <br/>
+│       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── personCenter.scss         <br/>
+│       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── productPage.scss         <br/>
+│       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── public.scss         <br/>
+│       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── registe.scss         <br/>
+│       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── shopCar.scss         <br/>
+│       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── style.scss         <br/>
+│   &nbsp;&nbsp;&nbsp;&nbsp;├── img                // 图片         <br/>
+│   &nbsp;&nbsp;&nbsp;&nbsp;├── pages              // 页面         <br/>
+│   &nbsp;&nbsp;&nbsp;&nbsp;├── script                // JS         <br/>
+│   &nbsp;&nbsp;&nbsp;&nbsp;└── static              // web静态资源加载         <br/>
 
