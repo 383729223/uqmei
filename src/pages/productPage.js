@@ -1,10 +1,11 @@
 require(["../script/config.js"],function(){
-	require(["jquery","swiper","common","template","jqueryCookie","bootstrap"],function($,Swiper,pub,template,jqCookie){
+	require(["jquery","swiper","common","template","jqueryCookie","headerJs","bootstrap"],function($,Swiper,pub,template,jqCookie,comHeader){
 
 		// 加载头部尾部
 		$("#header").load("common/header.html",function(){
 			// 页头时间
-			$(".phone p").html(pub.createDate())
+			$(".phone p").html(pub.createDate());
+			comHeader.commonHeader();		//加载头部公共JS，登录状态
 		});
 		$("#footer").load("common/footer.html");
 		

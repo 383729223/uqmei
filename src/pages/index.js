@@ -1,5 +1,5 @@
 require(["../script/config.js"],function(){
-	require(["jquery","swiper","common","template","jqueryCookie","bootstrap"],function($,Swiper,pub,template,jqCookie){
+	require(["jquery","swiper","common","template","jqueryCookie","headerJs","bootstrap"],function($,Swiper,pub,template,jqCookie,comHeader){
 		$(function(){		//加载完执行
 
 
@@ -7,7 +7,7 @@ require(["../script/config.js"],function(){
 			$("#header").load("common/header.html",function(){
 				// 页头时间
 				$(".phone p").html(pub.createDate());
-				require(["headerJs"],function(){});		//加载头部公共JS，登录状态
+				comHeader.commonHeader();		//加载头部公共JS，登录状态
 			});
 			$("#footer").load("common/footer.html");
 
