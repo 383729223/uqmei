@@ -12,6 +12,8 @@ node v8.9.3
 
 3.gulp webserver    //开启本地服务器
 
+4.src/pages/index.html  //首页
+
 #### 目录结构描述
 
 ├── Readme.md                   // help<br/>
