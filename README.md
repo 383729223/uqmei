@@ -7,7 +7,7 @@ node v8.9.3
 ## 本地查看
 
 ```bash
-  git clone git@github.com:QiShaoXuan/animate_resume_ts.git
+  git clone https://github.com/383729223/uqmei.git
   npm install
   gulp
 ```
