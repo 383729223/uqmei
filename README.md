@@ -4,14 +4,21 @@
 
 node v8.9.3
 
-#### 开启步骤<br/>
+## 本地查看
 
-1.npm install   //安装node运行环境
+```bash
+  git clone git@github.com:QiShaoXuan/animate_resume_ts.git
+  npm install
+  gulp
+```
 
-2.gulp build    //前端编译
+## 开启步骤<br/>
 
-3.gulp webserver    //开启本地服务器
-
-4.src/pages/index.html  //首页
+```bash
+  npm install   //安装node运行环境
+  gulp build
+  gulp webserver    //开启本地服务器
+  src/pages/index.html  //首页
+```
 
 
